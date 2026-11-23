@@ -6,6 +6,15 @@
 <meta name="theme-color" content="#101010">
 <meta name="description" content="CARONIX - Compartilhe a viagem. Chegue mais longe.">
 <link rel="manifest" href="manifest.json">
+ <link rel="icon" href="icon-192.png">
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+</script>
 <title>CARONIX</title>
 
 <style>
