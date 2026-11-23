@@ -3,136 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<meta name="description" content="CARONIX - Compartilhe a viagem. Chegue mais longe.">
+<link rel="manifest" href="manifest.json">
 <title>CARONIX</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#101010;
+ color:white;
+ font-family:Arial,sans-serif;
+ padding-bottom:85px;
 }
-
-body {
-  margin: 0;
-  background: #101010;
-  color: white;
-  font-family: Arial, sans-serif;
+header{
+ background:#080808;
+ padding:25px 20px;
+ text-align:center;
+ border-bottom:1px solid #333;
 }
-
-header {
-  padding: 35px 20px;
-  text-align: center;
-  background: #080808;
+.logo{
+ font-size:32px;
+ font-weight:bold;
+ letter-spacing:5px;
 }
-
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 4px;
+.logo span{color:#999}
+header p{color:#999;font-size:12px}
+main{padding:22px 18px}
+h2{font-size:23px}
+.card{
+ background:#242424;
+ padding:20px;
+ border-radius:16px;
+ margin-top:18px;
+ border:1px solid #383838;
 }
-
-.logo span {
-  color: #999999;
+label{
+ color:#aaa;
+ font-size:12px;
+ display:block;
+ margin-top:12px;
 }
-
-.subtitle {
-  color: #999;
-  margin-top: 8px;
+input,select{
+ width:100%;
+ padding:15px;
+ margin-top:8px;
+ background:#383838;
+ border:1px solid #555;
+ border-radius:10px;
+ color:white;
+ font-size:15px;
 }
-
-main {
-  padding: 25px 20px;
+button{
+ width:100%;
+ padding:16px;
+ border:0;
+ border-radius:10px;
+ background:#c0c0c0;
+ color:#111;
+ font-size:15px;
+ font-weight:bold;
+ margin-top:16px;
 }
-
-h2 {
-  font-size: 24px;
+.secondary{
+ background:#383838;
+ color:white;
+ border:1px solid #777;
 }
-
-.card {
-  background: #242424;
-  padding: 20px;
-  border-radius: 16px;
-  margin-top: 20px;
+nav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ width:100%;
+ display:flex;
+ background:#080808;
+ border-top:1px solid #444;
+ justify-content:space-around;
+ padding:13px 3px;
 }
-
-label {
-  color: #aaa;
-  font-size: 13px;
+nav button{
+ background:none;
+ color:#aaa;
+ margin:0;
+ padding:5px 2px;
+ font-size:11px;
+ width:25%;
 }
-
-input {
-  width: 100%;
-  padding: 15px;
-  margin: 8px 0 18px;
-  background: #383838;
-  border: 1px solid #555;
-  border-radius: 10px;
-  color: white;
-  font-size: 15px;
-}
-
-button {
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 10px;
-  background: #bdbdbd;
-  color: #111;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.secondary {
-  background: #383838;
-  color: white;
-  border: 1px solid #777;
-}
-
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #888;
-}
+nav button.active{color:white}
+.icon{font-size:21px;display:block;margin-bottom:5px}
+.page{display:none}
+.page.active{display:block}
+.info{color:#aaa;font-size:13px;line-height:1.6}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">CARO<span>NIX</span></div>
-  <div class="subtitle">Compartilhe a viagem. Chegue mais longe.</div>
+ <div class="logo">CARO<span>NIX</span></div>
+ <p>COMPARTILHE A VIAGEM. CHEGUE MAIS LONGE.</p>
 </header>
 
 <main>
 
+<section id="inicio" class="page active">
 <h2>Para onde vamos?</h2>
+<p class="info">Encontre sua próxima carona.</p>
 
 <div class="card">
+<label>📍 ORIGEM</label>
+<input id="origem" value="Recife - PE">
 
-<label>ORIGEM</label>
-<input type="text" value="Recife - PE">
+<label>📍 DESTINO</label>
+<input id="destino" value="João Pessoa - PB">
 
-<label>DESTINO</label>
-<input type="text" value="João Pessoa - PB">
+<label>📅 DATA DA VIAGEM</label>
+<input id="data" type="date">
 
-<label>DATA DA VIAGEM</label>
-<input type="date">
+<label>👥 PASSAGEIROS</label>
+<select id="passageiros">
+<option>1 passageiro</option>
+<option>2 passageiros</option>
+<option>3 passageiros</option>
+<option>4 passageiros</option>
+</select>
 
-<label>PASSAGEIROS</label>
-<input type="number" min="1" max="4" value="1">
-
-<button>PROCURAR CARONA</button>
-
-<button class="secondary">OFERECER CARONA</button>
-
+<button onclick="buscar()">PROCURAR CARONA</button>
+<button class="secondary" onclick="abrir('oferecer')">🚘 OFERECER CARONA</button>
 </div>
+
+<div class="card">
+<h3>🚘 CARONIX</h3>
+<p class="info">Viaje com conforto, compartilhe os custos e conheça novos caminhos.</p>
+</div>
+</section>
+
+<section id="oferecer" class="page">
+<h2>Oferecer carona</h2>
+<div class="card">
+<label>ORIGEM</label>
+<input id="oOrigem" placeholder="Cidade de saída">
+<label>DESTINO</label>
+<input id="oDestino" placeholder="Cidade de destino">
+<label>DATA</label>
+<input id="oData" type="date">
+<label>HORÁRIO</label>
+<input id="oHora" type="time">
+<label>VAGAS DISPONÍVEIS</label>
+<select id="oVagas">
+<option>1 vaga</option>
+<option>2 vagas</option>
+<option>3 vagas</option>
+<option>4 vagas</option>
+</select>
+<label>VALOR POR PASSAGEIRO (R$)</label>
+<input id="oPreco" type="number" placeholder="Ex: 40">
+<button onclick="publicar()">PUBLICAR VIAGEM</button>
+<p class="info" id="resultado"></p>
+</div>
+</section>
+
+<section id="viagens" class="page">
+<h2>Minhas viagens</h2>
+<div id="lista" class="card">
+<p class="info">Suas viagens publicadas aparecerão aqui.</p>
+</div>
+</section>
+
+<section id="perfil" class="page">
+<h2>Meu perfil</h2>
+<div class="card">
+<h3>👤 Bem-vindo ao CARONIX</h3>
+<label>SEU NOME</label>
+<input id="nome" placeholder="Digite seu nome">
+<label>TELEFONE</label>
+<input id="telefone" placeholder="Seu telefone">
+<button onclick="salvarPerfil()">SALVAR PERFIL</button>
+<p class="info" id="perfilMsg"></p>
+</div>
+</section>
 
 </main>
 
-<footer>
-CARONIX © 2026
-<br>
-Sua viagem começa aqui.
-</footer>
+<nav>
+<button class="active" onclick="abrir('inicio',this)">
+<span class="icon">⌂</span>Início
+</button>
+<button onclick="abrir('oferecer',this)">
+<span class="icon">🚘</span>Oferecer
+</button>
+<button onclick="abrir('viagens',this)">
+<span class="icon">🎫</span>Viagens
+</button>
+<button onclick="abrir('perfil',this)">
+<span class="icon">👤</span>Perfil
+</button>
+</nav>
+
+<script>
+function abrir(pagina,botao){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(pagina).classList.add('active');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ if(botao) botao.classList.add('active');
+ else document.querySelectorAll('nav button')[0].classList.add('active');
+}
+
+function buscar(){
+ const origem=document.getElementById('origem').value;
+ const destino=document.getElementById('destino').value;
+ alert('Busca de carona: '+origem+' → '+destino+'. A conexão com viagens disponíveis será implementada na próxima etapa.');
+}
+
+function publicar(){
+ const origem=document.getElementById('oOrigem').value;
+ const destino=document.getElementById('oDestino').value;
+ const data=document.getElementById('oData').value;
+ const hora=document.getElementById('oHora').value;
+ const preco=document.getElementById('oPreco').value;
+ if(!origem||!destino||!data||!hora||!preco){
+  alert('Preencha todos os campos.');
+  return;
+ }
+ const viagem={origem,destino,data,hora,preco};
+ let viagens=JSON.parse(localStorage.getItem('caronix_viagens')||'[]');
+ viagens.push(viagem);
+ localStorage.setItem('caronix_viagens',JSON.stringify(viagens));
+ mostrarViagens();
+ document.getElementById('resultado').innerText='Viagem salva neste aparelho!';
+}
+
+function mostrarViagens(){
+ const viagens=JSON.parse(localStorage.getItem('caronix_viagens')||'[]');
+ const lista=document.getElementById('lista');
+ lista.innerHTML=viagens.length?'':'<p class="info">Nenhuma viagem publicada ainda.</p>';
+ viagens.forEach(v=>{
+  lista.innerHTML+=`<div class="card">
+  <h3>${v.origem} → ${v.destino}</h3>
+  <p class="info">${v.data} às ${v.hora}</p>
+  <h3>R$ ${v.preco}</h3>
+  </div>`;
+ });
+}
+
+function salvarPerfil(){
+ const nome=document.getElementById('nome').value;
+ if(!nome){alert('Digite seu nome.');return;}
+ localStorage.setItem('caronix_nome',nome);
+ document.getElementById('perfilMsg').innerText='Perfil salvo neste aparelho!';
+}
+
+mostrarViagens();
+</script>
 
 </body>
 </html>
