@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARONIX</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101010;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 35px 20px;
+  text-align: center;
+  background: #080808;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.logo span {
+  color: #999999;
+}
+
+.subtitle {
+  color: #999;
+  margin-top: 8px;
+}
+
+main {
+  padding: 25px 20px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+.card {
+  background: #242424;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+label {
+  color: #aaa;
+  font-size: 13px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 8px 0 18px;
+  background: #383838;
+  border: 1px solid #555;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #bdbdbd;
+  color: #111;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.secondary {
+  background: #383838;
+  color: white;
+  border: 1px solid #777;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">CARO<span>NIX</span></div>
+  <div class="subtitle">Compartilhe a viagem. Chegue mais longe.</div>
+</header>
+
+<main>
+
+<h2>Para onde vamos?</h2>
+
+<div class="card">
+
+<label>ORIGEM</label>
+<input type="text" value="Recife - PE">
+
+<label>DESTINO</label>
+<input type="text" value="João Pessoa - PB">
+
+<label>DATA DA VIAGEM</label>
+<input type="date">
+
+<label>PASSAGEIROS</label>
+<input type="number" min="1" max="4" value="1">
+
+<button>PROCURAR CARONA</button>
+
+<button class="secondary">OFERECER CARONA</button>
+
+</div>
+
+</main>
+
+<footer>
+CARONIX © 2026
+<br>
+Sua viagem começa aqui.
+</footer>
+
+</body>
+</html>
